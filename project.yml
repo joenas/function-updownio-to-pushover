@@ -1,19 +1,12 @@
-environment: {}
-parameters: {}
 packages:
   - name: updownio-to-pushover
-    environment: {}
-    parameters: {}
-    annotations: {}
     functions:
       - name: proxy
-        binary: false
-        main: ''
         runtime: 'nodejs:18'
         web: true
-        parameters: {}
-        environment: {}
-        annotations: {}
+        environment:
+          PUSHOVER_USER: ${PUSHOVER_USER}
+          PUSHOVER_TOKEN: ${PUSHOVER_TOKEN}
         limits:
           memory: 128
           timeout: 3000

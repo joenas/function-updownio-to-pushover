@@ -1,13 +1,9 @@
 {
-  "name": "updown-webhook-to-pushover",
-  "version": "1.0.0",
-  "description": "Hello world: NodeJs",
-  "license": "UNLICENSED",
-  "private": true,
+  "name": "updownio-webhook-to-pushover",
   "main": "index.js",
   "dependencies": {
-    "moment": "latest",
-    "moment-timezone": "^0.5.31",
-    "pushover-notifications": "latest"
+    "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
+    "pushover-notifications": "^1.2.2"
   }
 }

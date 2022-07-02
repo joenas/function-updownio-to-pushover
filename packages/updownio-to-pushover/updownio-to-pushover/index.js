@@ -53,12 +53,12 @@ exports.main = (args) => {
     if (body.event === "check.down") {
         updownEvent     = "🔴 Down";
         eventTime       = moment(body.downtime.started_at);
-        timestr         = time.tz("Europe/Amsterdam").format("HH:mm:ss z");
+        timestr         = eventTime.tz("Europe/Amsterdam").format("HH:mm:ss z");
         pushoverMessage = "Down since: " + timestr + "\nReason: " + errorCodes(body.downtime.error);
     } else if (body.event === "check.up") {
         updownEvent     = "✅ Up";
         eventTime       = moment(body.downtime.ended_at);
-        timestr         = time.tz("Europe/Amsterdam").format("HH:mm:ss z");
+        timestr         = eventTime.tz("Europe/Amsterdam").format("HH:mm:ss z");
         pushoverMessage = "Up since: " + timestr + ", after " + (Math.round((body.downtime.duration / 60) * 10) / 10) + " minutes of downtime\nReason: " + errorCodes(body.downtime.error);
     }
 

@@ -16,7 +16,7 @@ function errorCodes(err) {
 }
 
 // no async for Push...
-function main(args) {
+exports.main = (args) => {
     let response = {
         statusCode: 200,
         body: "done"
@@ -67,9 +67,8 @@ function main(args) {
     });
 
     response = {
-        statusCode: 500, body: "notifications not send"
+        statusCode: 500,
+        body: "notifications not send"
     };
     return response;
 }
-
-exports.main = main;

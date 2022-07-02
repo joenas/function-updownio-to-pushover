@@ -1,12 +1,18 @@
 alerts:
   - rule: DEPLOYMENT_FAILED
+name: function-updownio-to-pushover
 functions:
-  - github:
+  - name: updownio-to-pushover
+    git:
       branch: master
-      deploy_on_push: true
-      repo: MarcHagen/function-updownio-to-pushover
-    name: updownio-to-pushover
+      repo: https://github.com/MarcHagen/function-updownio-to-pushover.git
     routes:
       - path: /
     source_dir: /
-name: function-updownio-to-pushover
+    envs:
+      - key: PUSHOVER_USER
+        value: "pushover user-key"
+        type: SECRET
+      - key: PUSHOVER_TOKEN
+        value: "pushover app-key"
+        type: SECRET

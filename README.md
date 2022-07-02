@@ -25,8 +25,7 @@ This repo/code will convert [UpDown.io] webhooks to a [Pushover.net] notificatio
 6. Hit `Save` and then hit `Next`, change settings if desire and review the billing plan(!) at the end.
 7. When all is fine, hit `Create Resources` and the app will be deployed.
 8. Wait for the deployment to be complete.
-9. Hit the `Overview` tab and click on the `function-upd...` link.
-10. Next to `Functions` you will see a link, copy this (we need this for [UpDown.io]).
+9. Hit the `Overview` tab and under `HTTP ROUTES` copy the link. (we need this for [UpDown.io])
 
 ### Setup [UpDown.io]
 1. Go to the settings page.

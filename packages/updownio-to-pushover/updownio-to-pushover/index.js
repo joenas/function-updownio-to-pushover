@@ -26,6 +26,7 @@ exports.main = (args) => {
         response = {
             statusCode: 422
         };
+        console.log("user-agent(" + args.__ow_headers["user-agent"] + ") was not \"updown.io webhooks\"");
         return response;
     }
 
@@ -48,11 +49,13 @@ exports.main = (args) => {
         response = {
             statusCode: 422
         };
+        console.log("event was unknown to code: " + body.event);
         return response;
     }
 
     const msg = {
-        message: msg_message, title: updownEvent + ": " + (body.check.alias ? body.check.alias : body.check.url),
+        message: msg_message,
+        title: updownEvent + ": " + (body.check.alias ? body.check.alias : body.check.url),
     };
 
     p.send(msg, (err, res) => {
@@ -63,6 +66,8 @@ exports.main = (args) => {
         response = {
             statusCode: 200, body: null
         };
+        console.log("Event forwarded to Pushover!");
+        console.log(msg);
         return response;
     });
 
@@ -70,5 +75,6 @@ exports.main = (args) => {
         statusCode: 500,
         body: "notifications not send"
     };
+    console.log("Failed to forward event to Pushover...");
     return response;
 }

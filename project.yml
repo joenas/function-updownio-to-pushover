@@ -1,0 +1,19 @@
+environment: {}
+parameters: {}
+packages:
+  - name: updown-webhook-to-pushover
+    environment: {}
+    parameters: {}
+    annotations: {}
+    functions:
+      - name: proxy
+        binary: false
+        main: ''
+        runtime: 'nodejs:18'
+        web: true
+        parameters: {}
+        environment: {}
+        annotations: {}
+        limits:
+          memory: 128
+          timeout: 3000

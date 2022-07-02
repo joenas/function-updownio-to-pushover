@@ -1,6 +1,10 @@
 {
+  "name": "updown-webhook-to-pushover",
+  "version": "1.0.0",
+  "description": "Hello world: NodeJs",
   "license": "UNLICENSED",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "moment": "latest",
     "moment-timezone": "^0.5.31",

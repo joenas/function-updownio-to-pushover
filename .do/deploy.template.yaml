@@ -1,20 +1,21 @@
-name: function-updownio-to-pushover
-alerts:
-  - rule: DEPLOYMENT_FAILED
-functions:
-  - name: updownio-to-pushover
-    git:
-      branch: main
-      repo: https://github.com/MarcHagen/function-updownio-to-pushover
-    github:
-      repo: MarcHagen/function-updownio-to-pushover
-      branch: main
-      deploy_on_push: true
-    routes:
-      - path: /
-    source_dir: /
-    envs:
-      - key: PUSHOVER_USER
-        value: <REPLACE_ME>
-      - key: PUSHOVER_TOKEN
-        value: <REPLACE_ME>
+spec:
+  name: function-updownio-to-pushover
+  alerts:
+    - rule: DEPLOYMENT_FAILED
+  functions:
+    - name: updownio-to-pushover
+      git:
+        branch: main
+        repo: https://github.com/MarcHagen/function-updownio-to-pushover
+      github:
+        repo: MarcHagen/function-updownio-to-pushover
+        branch: main
+        deploy_on_push: true
+      routes:
+        - path: /
+      source_dir: /
+      envs:
+        - key: PUSHOVER_USER
+          value: <REPLACE_ME>
+        - key: PUSHOVER_TOKEN
+          value: <REPLACE_ME>

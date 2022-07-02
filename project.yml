@@ -1,8 +1,8 @@
 packages:
   - name: updownio-to-pushover
     actions:
-      - name: proxy
-        runtime: 'nodejs:18'
+      - name: updownio-to-pushover
+        runtime: nodejs:default
         web: true
         environment:
           PUSHOVER_USER: ${PUSHOVER_USER}

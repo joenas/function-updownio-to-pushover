@@ -17,6 +17,9 @@ function errorCodes(err) {
 
 // no async for Push...
 function main(args) {
+
+    console.log(args)
+
     let response = {
         statusCode: 200,
         body: "done"

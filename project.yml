@@ -1,6 +1,6 @@
 packages:
   - name: updownio-to-pushover
-    functions:
+    actions:
       - name: proxy
         runtime: 'nodejs:18'
         web: true

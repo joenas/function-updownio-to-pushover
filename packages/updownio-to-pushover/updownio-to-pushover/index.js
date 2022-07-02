@@ -58,8 +58,13 @@ exports.main = (args) => {
         title: updownEvent + ": " + (body.check.alias ? body.check.alias : body.check.url),
     };
 
-    p.send(msg, (err, res) => {
+    p.send(msg, (err, data, res) => {
         if (err) {
+            response = {
+                statusCode: 500,
+                body: "notifications not send"
+            };
+            console.log("Failed to forward event to Pushover...");
             throw err;
         }
 
@@ -69,12 +74,5 @@ exports.main = (args) => {
         console.log("Event forwarded to Pushover!");
         console.log(msg);
         return response;
-    });
-
-    response = {
-        statusCode: 500,
-        body: "notifications not send"
-    };
-    console.log("Failed to forward event to Pushover...");
-    return response;
+    })
 }

@@ -5,7 +5,7 @@ functions:
   - name: updownio-to-pushover
     git:
       branch: master
-      repo: https://github.com/MarcHagen/function-updownio-to-pushover.git
+      repo: https://github.com/MarcHagen/function-updownio-to-pushover/tree/main
     routes:
       - path: /
     source_dir: /

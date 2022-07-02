@@ -10,7 +10,7 @@ This repo/code will convert [UpDown.io] webhooks to a [Pushover] notification.
 
 
  ---
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/{REPO-OWNER}/{REPO-NAME}/tree/{BRANCH-NAME})
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/MarcHagen/function-updownio-to-pushover/tree/main)
 
 [Pushover]: https://pushover.net
 [UpDown.io]: https://updown.io

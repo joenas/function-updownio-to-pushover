@@ -1,6 +1,12 @@
 const Push   = require("pushover-notifications");
 const moment = require("moment-timezone");
 
+const updown_down_event = "check.down";
+const updown_up_event   = "check.up";
+const valid_events      = [
+    updown_down_event,
+    updown_up_event
+];
 
 function errorCodes(err) {
     switch (err) {
@@ -17,24 +23,31 @@ function errorCodes(err) {
 
 // no async for Push...
 exports.main = (args) => {
-    let response = {
-        statusCode: 200,
-        body: "done"
-    };
+    let response;
 
     if (args.__ow_headers["user-agent"] !== "updown.io webhooks") {
         response = {
-            statusCode: 422
+            statusCode: 422,
+            body: null
         };
         console.log("user-agent(" + args.__ow_headers["user-agent"] + ") was not \"updown.io webhooks\"");
         return response;
     }
 
     const p = new Push({
-        user: process.env.PUSHOVER_USER, token: process.env.PUSHOVER_TOKEN
+        user: process.env.PUSHOVER_USER,
+        token: process.env.PUSHOVER_TOKEN
     });
 
     let body = args.__ow_body[0];
+    if (body.event === undefined || !valid_events.includes(body.event)) {
+        response = {
+            statusCode: 422,
+            body: null
+        };
+        console.log("event was unknown to code: " + body.event);
+        return response;
+    }
 
     let msg_message, timestr, updownEvent;
     if (body.event === "check.down") {

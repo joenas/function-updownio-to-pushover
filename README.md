@@ -35,5 +35,5 @@ This repo/code will convert [UpDown.io] webhooks to a [Pushover.net] notificatio
 [Deploy this to DigitalOcean Apps]: https://cloud.digitalocean.com/apps/new?repo=https://github.com/MarcHagen/function-updownio-to-pushover/tree/main&refcode=4258a2bdda88
 [Pushover.net]: https://pushover.net
 [Pushover]: https://pushover.net
-[UpDown.io]: https://updown.io
+[UpDown.io]: https://updown.io/r/F7EYe
 [DigitalOcean]: https://m.do.co/c/4258a2bdda88

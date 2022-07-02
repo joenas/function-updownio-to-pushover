@@ -1,0 +1,9 @@
+{
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "moment": "latest",
+    "moment-timezone": "^0.5.31",
+    "pushover-notifications": "latest"
+  }
+}

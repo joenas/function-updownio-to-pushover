@@ -13,4 +13,4 @@ yarn-error.log*
 node_modules/
 
 # DigitalOcean
-*.zip
+__deployer__.zip

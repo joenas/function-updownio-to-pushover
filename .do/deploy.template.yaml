@@ -1,0 +1,12 @@
+alerts:
+  - rule: DEPLOYMENT_FAILED
+functions:
+  - github:
+      branch: master
+      deploy_on_push: true
+      repo: MarcHagen/function-updownio-to-pushover
+    name: updownio-to-pushover
+    routes:
+      - path: /
+    source_dir: /
+name: function-updownio-to-pushover

@@ -1,7 +1,7 @@
 environment: {}
 parameters: {}
 packages:
-  - name: updown-webhook-to-pushover
+  - name: updownio-to-pushover
     environment: {}
     parameters: {}
     annotations: {}

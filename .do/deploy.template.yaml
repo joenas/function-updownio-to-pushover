@@ -14,10 +14,8 @@ spec:
       source_dir: /
       envs:
         - key: PUSHOVER_USER
-          value: "pushover user-key"
           type: SECRET
         - key: PUSHOVER_TOKEN
-          value: "pushover app-key"
           type: SECRET
   alerts:
     - rule: DEPLOYMENT_FAILED

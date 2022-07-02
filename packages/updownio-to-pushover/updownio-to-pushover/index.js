@@ -17,9 +17,6 @@ function errorCodes(err) {
 
 // no async for Push...
 function main(args) {
-
-    console.log(args)
-
     let response = {
         statusCode: 200,
         body: "done"
@@ -36,8 +33,7 @@ function main(args) {
         user: process.env.PUSHOVER_USER, token: process.env.PUSHOVER_TOKEN
     });
 
-    let body = JSON.parse(args.__ow_body);
-    body     = body[0];
+    let body = args.__ow_body[0];
 
     let msg_message, timestr, updownEvent;
     if (body.event === "check.down") {

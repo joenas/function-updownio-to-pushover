@@ -49,29 +49,26 @@ exports.main = (args) => {
         return response;
     }
 
-    let msg_message, timestr, updownEvent;
+    let pushoverMessage, timestr, updownEvent, eventTime;
     if (body.event === "check.down") {
-        updownEvent = "DOWN";
-        timestr     = moment(body.downtime.started_at).tz("Europe/Amsterdam").format("HH:mm:ss z");
-        msg_message = "Down since: " + timestr + "\nReason: " + errorCodes(body.downtime.error);
+        updownEvent     = "🔴 Down";
+        eventTime       = moment(body.downtime.started_at);
+        timestr         = time.tz("Europe/Amsterdam").format("HH:mm:ss z");
+        pushoverMessage = "Down since: " + timestr + "\nReason: " + errorCodes(body.downtime.error);
     } else if (body.event === "check.up") {
-        updownEvent = "UP";
-        timestr     = moment(body.downtime.ended_at).tz("Europe/Amsterdam").format("HH:mm:ss z");
-        msg_message = "Up since: " + timestr + ", after " + (Math.round((body.downtime.duration / 60) * 10) / 10) + " minutes of downtime\nReason: " + errorCodes(body.downtime.error);
-    } else {
-        response = {
-            statusCode: 422
-        };
-        console.log("event was unknown to code: " + body.event);
-        return response;
+        updownEvent     = "✅ Up";
+        eventTime       = moment(body.downtime.ended_at);
+        timestr         = time.tz("Europe/Amsterdam").format("HH:mm:ss z");
+        pushoverMessage = "Up since: " + timestr + ", after " + (Math.round((body.downtime.duration / 60) * 10) / 10) + " minutes of downtime\nReason: " + errorCodes(body.downtime.error);
     }
 
     const msg = {
-        message: msg_message,
+        message: pushoverMessage,
         title: updownEvent + ": " + (body.check.alias ? body.check.alias : body.check.url),
+        timestamp: eventTime.unix()
     };
 
-    p.send(msg, (err, data, res) => {
+    p.send(msg, (err) => {
         if (err) {
             response = {
                 statusCode: 500,
@@ -82,10 +79,11 @@ exports.main = (args) => {
         }
 
         response = {
-            statusCode: 200, body: null
+            statusCode: 200,
+            body: null
         };
         console.log("Event forwarded to Pushover!");
         console.log(msg);
         return response;
-    })
-}
+    });
+};

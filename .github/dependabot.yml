@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "packages/updownio-to-pushover/updownio-to-pushover"
+    schedule:
+      interval: "weekly"

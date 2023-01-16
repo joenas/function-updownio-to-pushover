@@ -1,8 +1,8 @@
 {
   "name": "updownio-webhook-to-pushover",
   "description": "Convert UpDown.io webhooks to Pushover notifications",
-  "repository": "github:MarcHagen/function-updownio-to-pushover"
-  "license": "MIT"
+  "repository": "github:MarcHagen/function-updownio-to-pushover",
+  "license": "MIT",
   "main": "index.js",
   "dependencies": {
     "moment": "^2.29.4",

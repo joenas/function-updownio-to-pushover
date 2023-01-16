@@ -8,5 +8,5 @@ packages:
           PUSHOVER_USER: ${PUSHOVER_USER}
           PUSHOVER_TOKEN: ${PUSHOVER_TOKEN}
         limits:
-          memory: 32
+          memory: 128
           timeout: 3000

@@ -2,7 +2,7 @@
   "name": "updownio-webhook-to-pushover",
   "main": "index.js",
   "dependencies": {
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
     "pushover-notifications": "^1.2.2"
   }

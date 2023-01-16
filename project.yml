@@ -2,11 +2,11 @@ packages:
   - name: updownio-to-pushover
     actions:
       - name: updownio-to-pushover
-        runtime: nodejs:default
+        runtime: nodejs:18
         web: true
         environment:
           PUSHOVER_USER: ${PUSHOVER_USER}
           PUSHOVER_TOKEN: ${PUSHOVER_TOKEN}
         limits:
-          memory: 128
+          memory: 32
           timeout: 3000

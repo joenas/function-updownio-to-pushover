@@ -1,4 +1,4 @@
-const Push   = require("pushover-notifications");
+const Pushover = require( 'pushover-js').Pushover;
 const moment = require("moment-timezone");
 
 const updown_down_event = "check.down";
@@ -21,8 +21,7 @@ function errorCodes(err) {
     }
 }
 
-// no async for Push...
-exports.main = (args) => {
+exports.main = async (args) => {
     let response;
 
     if (args.__ow_headers["user-agent"] !== "updown.io webhooks") {
@@ -34,10 +33,7 @@ exports.main = (args) => {
         return response;
     }
 
-    const p = new Push({
-        user: process.env.PUSHOVER_USER,
-        token: process.env.PUSHOVER_TOKEN
-    });
+    const pushover = new Pushover(process.env.PUSHOVER_USER, process.env.PUSHOVER_TOKEN);
 
     let body = args.__ow_body[0];
     if (body.event === undefined || !valid_events.includes(body.event)) {
@@ -68,23 +64,29 @@ exports.main = (args) => {
         timestamp: eventTime.unix()
     };
 
-    p.send(msg, (err) => {
-        if (err) {
+    return await pushover
+        .setTimestamp(msg.timestamp)
+        .send(msg.title, msg.message)
+        .then(response => {
+            console.log("Event forwarded to Pushover!");
+            console.log(msg);
+
             response = {
-                statusCode: 500,
-                body: "notifications not send"
+                statusCode: 200,
+                body: null
             };
+            return response;
+        })
+        .catch(err => {
             console.log("Failed to forward event to Pushover...");
             console.log(msg);
-            throw err;
-        }
+            console.log(err);
 
-        response = {
-            statusCode: 200,
-            body: null
-        };
-        console.log("Event forwarded to Pushover!");
-        console.log(msg);
-        return response;
-    });
+            // Send not code 200 back to updown.io, will try again up to 25 times
+            response = {
+                statusCode: 500,
+                body: 'notifications not send'
+            };
+            return response;
+        })
 };

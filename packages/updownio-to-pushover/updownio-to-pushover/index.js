@@ -75,6 +75,7 @@ exports.main = (args) => {
                 body: "notifications not send"
             };
             console.log("Failed to forward event to Pushover...");
+            console.log(msg);
             throw err;
         }
 

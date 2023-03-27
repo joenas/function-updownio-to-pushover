@@ -39,7 +39,7 @@ exports.main = async (args) => {
     }
 
     let updownEvent, eventTime;
-    let pushoverMessage = body.check.description;
+    let pushoverMessage = body.description;
     if (body.event === updown_down_event) {
         updownEvent = "🔴 Down";
         eventTime = moment(body.downtime.started_at);

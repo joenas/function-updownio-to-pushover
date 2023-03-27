@@ -4,6 +4,7 @@ spec:
     - rule: DEPLOYMENT_FAILED
   functions:
     - name: updownio-to-pushover
+      dockerfile_path: Dockerfile
       git:
         branch: main
         repo: https://github.com/MarcHagen/function-updownio-to-pushover

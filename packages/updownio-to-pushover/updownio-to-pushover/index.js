@@ -46,10 +46,10 @@ exports.main = async (args) => {
     } else if (body.event === updown_up_event) {
         updownEvent = "✅ Up";
         eventTime = moment(body.downtime.ended_at);
-    } else if (body.event in ssl_events) {
+    } else if (ssl_events.includes(body.event)) {
         updownEvent = "🔐 SSL";
         eventTime = moment(body.check.last_check_at);
-    } else if (body.event in performance_events) {
+    } else if (performance_events.includes(body.event)) {
         updownEvent = "⚡ Performance";
         eventTime = moment(body.check.last_check_at);
     } else {

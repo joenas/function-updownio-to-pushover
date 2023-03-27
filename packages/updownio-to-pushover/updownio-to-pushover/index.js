@@ -14,7 +14,7 @@ const ssl_events = [updown_ssl_invalid, updown_ssl_valid, updown_ssl_expiration,
 const updown_performance_drop = "check.performance_drop";
 const performance_events = [updown_performance_drop];
 
-const valid_events = [updown_events, ssl_events, performance_events];
+const valid_events = [...updown_events, ...ssl_events, ...performance_events];
 
 exports.main = async (args) => {
     let response;

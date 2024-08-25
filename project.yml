@@ -1,6 +1,6 @@
 packages:
   - name: updownio-to-pushover
-    actions:
+    functions:
       - name: updownio-to-pushover
         runtime: nodejs:18
         web: true
